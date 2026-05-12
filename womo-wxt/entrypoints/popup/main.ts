@@ -1,24 +1,35 @@
-import './style.css';
-import typescriptLogo from '@/assets/typescript.svg';
-import wxtLogo from '/wxt.svg';
-import { setupCounter } from '@/components/counter';
+var addButton = document.getElementById('add-blocked-site-button') as HTMLButtonElement
+var siteInput = document.getElementById('add-blocked-site-input') as HTMLInputElement
+var siteList = document.getElementById('blocked-sites-list')
 
-document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
-  <div>
-    <a href="https://wxt.dev" target="_blank">
-      <img src="${wxtLogo}" class="logo" alt="WXT logo" />
-    </a>
-    <a href="https://www.typescriptlang.org/" target="_blank">
-      <img src="${typescriptLogo}" class="logo vanilla" alt="TypeScript logo" />
-    </a>
-    <h1>WXT + TypeScript</h1>
-    <div class="card">
-      <button id="counter" type="button"></button>
-    </div>
-    <p class="read-the-docs">
-      Click on the WXT and TypeScript logos to learn more
-    </p>
-  </div>
-`;
+function appendElement(){
+  var newSite = siteInput.value.trim();
+  if(newSite){
+    var listItem = document.createElement('li')
+    listItem.textContent = newSite
+    
+    if(typeof(Storage)!="undefined"){
+      if(localStorage.matches){
+        const currentMatches: string[] = JSON.parse(localStorage.matches);
+        currentMatches.push(newSite)
+        localStorage.matches = JSON.stringify(currentMatches)
+      }else{
+        localStorage.matches = JSON.stringify(newSite);
+      }
+    }
 
-setupCounter(document.querySelector<HTMLButtonElement>('#counter')!);
+    siteList?.appendChild(listItem)
+
+    siteInput.value = ''
+  }else{
+    alert('Please enter an item.')
+  }
+}
+
+addButton.addEventListener('click', appendElement)
+
+siteInput.addEventListener('keypress', function(event){
+  if(event.key === 'Enter'){
+    appendElement();
+  }
+})

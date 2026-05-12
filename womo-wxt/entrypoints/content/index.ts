@@ -1,9 +1,10 @@
 import { LOCALSTORAGE_MATCHES, DEFAULT_MATCHES } from "@/definitions";
+import { block } from "./block";
 
 export default defineContentScript({
   matches: ["<all_urls>"],
   main(ctx) {
-    localStorage.matches = JSON.stringify([".dev"]);
+    // localStorage.matches = JSON.stringify([".dev"]);
     let matches: string[] = ["NULL"];
     if(typeof(Storage)!="undefined"){
       if(localStorage.matches){
@@ -42,10 +43,7 @@ export default defineContentScript({
           // matches.forEach(check)
           if(matched){
             console.log("MATCH!")
-              document.body.textContent = "";
-              let header = document.createElement("h1");
-              header.textContent = "This page has been eaten";
-              document.body.appendChild(header);
+            block()
           }
           
         }

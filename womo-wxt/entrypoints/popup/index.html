@@ -7,7 +7,20 @@
     <meta name="manifest.type" content="browser_action" />
   </head>
   <body>
-    <div id="app"></div>
+    <div id="app">
+        <div>
+            <input type="text" id="add-blocked-site-input" placeholder="Enter a site to block">
+            <button id="add-blocked-site-button">Add Site</button>
+        </div>
+        <div>
+            <p>
+                your blocked sites are:
+                <ul id="blocked-sites-list">
+                    <!--dynamically appearing, oh my!-->
+                </ul>
+            </p>
+        </div>
+    </div>
     <script type="module" src="./main.ts"></script>
   </body>
 </html>
