@@ -1,5 +1,5 @@
 {
-  "name": "wxt-react-starter",
+  "name": "wxt-starter",
   "description": "manifest.json description",
   "private": true,
   "version": "0.0.0",
@@ -14,16 +14,7 @@
     "compile": "tsc --noEmit",
     "postinstall": "wxt prepare"
   },
-  "dependencies": {
-    "bootstrap": "^5.3.8",
-    "react": "^19.2.6",
-    "react-dom": "^19.2.6",
-    "reactstrap": "^9.2.3"
-  },
   "devDependencies": {
-    "@types/react": "^19.2.14",
-    "@types/react-dom": "^19.2.3",
-    "@wxt-dev/module-react": "^1.1.5",
     "typescript": "^5.9.3",
     "wxt": "^0.20.26"
   }
