@@ -27,10 +27,11 @@ export default defineContentScript({
           //   }
           // }
           let matched: boolean = false;
+          const url: string = window.location.href;
           for (let i = 0; i < matches.length; i++){
               let potentialMatch: string = matches[i];
               console.log(potentialMatch)
-              if(window.location.href.includes(potentialMatch)){
+              if(url.includes(potentialMatch) != null){
                 console.log("match")
                 matched = true;
                 break;
