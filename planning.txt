@@ -1,0 +1,9 @@
+What I need
+
+- extension module to accept user input for URLs to block
+- storage of URLs in localstorage
+- on every webpage, pull URLs from localstorage and compare with current webpage URL
+    - if match AND timer is inactive, block
+    - if no match, do nothing
+- on a blocked site, offer unblocking for 1 min, 2 min, 5 min, 10 min? + require user enters reason in a textbox
+    - on press of button, activate timer for X min-- during which no blocks occur

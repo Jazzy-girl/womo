@@ -3,12 +3,17 @@ import { block } from "./block";
 
 export default defineContentScript({
   matches: ["<all_urls>"],
-  main(ctx) {
+  async main(ctx) {
     // localStorage.matches = JSON.stringify([".dev"]);
-    let matches: string[] = ["NULL"];
+    var matches: string[] = ["NULL"];
     if(typeof(Storage)!="undefined"){
-      if(localStorage.matches){
-        matches = JSON.parse(localStorage.matches);
+      console.log("storage is defined yay")
+      const stored = await storage.getItem<string[]>('local:matches');
+
+      if(stored){
+        console.log("grab matches")
+        console.log("stored: ", stored);
+        
       }
     }
     /**
@@ -31,9 +36,11 @@ export default defineContentScript({
           const url: string = window.location.href;
           for (let i = 0; i < matches.length; i++){
               let potentialMatch: string = matches[i];
+              
               console.log(potentialMatch)
-              if(url.includes(potentialMatch) != null){
+              if(url.includes(potentialMatch)){
                 console.log("match")
+                console.log(url)
                 matched = true;
                 break;
               }
