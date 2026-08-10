@@ -1,0 +1,48 @@
+{
+  "manifest_version": 3,
+  "name": "WOMO",
+  "version": "1.0",
+
+  "description": "The bit in JOMO about temporarily unlocking blocked sites, but for non-Apple",
+
+	"content_scripts": [
+		{
+			"matches": ["<all_urls>"],
+			"exclude_matches": ["*://*/*lb-custom*"],
+			"js": ["content.js"],
+			"run_at": "document_end"
+		},
+		{
+			"matches": ["*://*/*lb-custom*"],
+			"js": ["blocked.js"]
+		}
+	],
+    
+	"host_permissions": [
+		"<all_urls>"
+	],
+
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "borderify@mozilla.org",
+      "data_collection_permissions": {
+        "required": ["none"]
+      }
+    }
+  },
+
+  "action": {
+
+    "default_title": "WOMO",
+    "default_popup": "popup/popup.html"
+  },
+
+  	"permissions": [
+		"alarms",
+		"menus",
+		"storage",
+		"tabs",
+		"unlimitedStorage",
+		"webNavigation"
+	]
+}
