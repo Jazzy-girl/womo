@@ -1,1 +1,22 @@
-document.body.style.border = "5px solid red";
+const BLOCKED_URLS = [
+    "reddit.com",
+    "youtube.com",
+]
+
+const regex = /https:\/\/www[.]reddit[.]com.*/
+
+function checkURL(urls){
+    const currentURL = window.location.href;
+    console.log(currentURL);
+    const matches = currentURL.match(regex)
+    if (matches != null){
+        console.log("match!");
+        console.log(matches);
+        // MATCH!
+        // document.body.innerHTML = '';
+    }else{
+        console.log("no match!");
+    }
+}
+
+checkURL(BLOCKED_URLS);
