@@ -4,11 +4,12 @@ const BLOCKED_URLS = [
 ]
 
 const regex = /https:\/\/www[.]reddit[.]com.*/
+const regex2 = RegExp(`https:\/\/www[.]${"reddit"}[.]com.*`)
 
 function checkURL(urls){
     const currentURL = window.location.href;
     console.log(currentURL);
-    const matches = currentURL.match(regex)
+    const matches = currentURL.match(regex2)
     if (matches != null){
         console.log("match!");
         console.log(matches);
