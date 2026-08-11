@@ -3,10 +3,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WOMO</title>
+    <script src="popup.js" defer></script>
 </head>
 <body>
-    <p>
-        This is the popup!
-    </p>
+    <div>
+        <div>
+            <label for="url-input">
+                give your URLS in the format of "xyz.com". One per line.
+            </label>
+            <textarea name="url-input" id="url-input" rows="4" cols="50"></textarea>
+        </div>
+        <div>
+            <button id="save-button">Save Options</button>
+        </div>
+    </div>
 </body>
 </html>

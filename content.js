@@ -9,6 +9,9 @@ const regex2 = RegExp(`https:\/\/www[.]${"reddit"}[.]com.*`)
 function checkURL(urls){
     const currentURL = window.location.href;
     console.log(currentURL);
+    for (url in urls){
+        console.log(url);
+    }
     const matches = currentURL.match(regex2)
     if (matches != null){
         console.log("match!");
