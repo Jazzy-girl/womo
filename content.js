@@ -3,9 +3,11 @@ const BLOCKED_URLS = [
     "youtube.com",
 ]
 
+function match(){
+    document.body.innerHTML = "";
+}
 
-
-function checkURL(urls){
+function checkURL(){
     const currentURL = window.location.href;
     browser.storage.local.get("URLS").then((result)=>{
 
@@ -31,6 +33,7 @@ function checkURL(urls){
             if(matches != null){
                 console.log("match!");
                 console.log(matches);
+                match();
                 break;
             }else{
                 console.log("no match");
@@ -63,4 +66,4 @@ function checkURL(urls){
     // }
 }
 
-checkURL(BLOCKED_URLS);
+checkURL();
