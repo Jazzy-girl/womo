@@ -4,9 +4,21 @@ const BLOCKED_URLS = [
 ]
 
 const LOCALSTORAGE_URLS = "LOCALSTORAGE_URLS"; // all blocked urls.
+const LOCALSTORAGE_UNBLOCKED = "LOCALSTORAGE_UNBLOCKED"; // boolean: did the user unblock
+const LOCALSTORAGE_UNTIL = "LOCALSTORAGE_UNTIL"; // null or a time. until when are things unblocked?
 
-function match(){
-    document.body.innerHTML = "";
+
+async function match(){
+    browser.storage.local.get(LOCALSTORAGE_UNBLOCKED).then((result)=>{
+        const numeric = parseInt(result.LOCALSTORAGE_UNBLOCKED);
+        console.log("LOCALSTORAGE: ", result.LOCALSTORAGE_UNBLOCKED);
+        if(!numeric){
+            // blocked!
+
+            document.body.innerHTML = "";
+        }
+    })
+    
 }
 
 function checkURL(){
@@ -53,19 +65,6 @@ function checkURL(){
 
     });
     
-    // console.log(currentURL);
-    // for (url in urls){
-    //     console.log(url);
-    // }
-    // const matches = currentURL.match(regex)
-    // if (matches != null){
-    //     console.log("match!");
-    //     console.log(matches);
-    //     // MATCH!
-    //     // document.body.innerHTML = '';
-    // }else{
-    //     console.log("no match!");
-    // }
 }
 
 checkURL();
