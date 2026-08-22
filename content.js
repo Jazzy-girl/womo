@@ -3,16 +3,18 @@ const BLOCKED_URLS = [
     "youtube.com",
 ]
 
+const LOCALSTORAGE_URLS = "LOCALSTORAGE_URLS"; // all blocked urls.
+
 function match(){
     document.body.innerHTML = "";
 }
 
 function checkURL(){
     const currentURL = window.location.href;
-    browser.storage.local.get("URLS").then((result)=>{
+    browser.storage.local.get(LOCALSTORAGE_URLS).then((result)=>{
 
-        const inputString = result.URLS;
-        console.log("result.URLS: ");
+        const inputString = result.LOCALSTORAGE_URLS;
+        console.log("result.LOCALSTORAGE_URLS: ");
         console.log(inputString);
         const blockedUrls = inputString.split("\n");
         console.log(`blockedURLS: ${blockedUrls}`);
