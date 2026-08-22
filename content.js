@@ -115,6 +115,16 @@ async function match(){
                 if(isPast){
                     // is past! set unblocked back to 0
                     browser.storage.local.set({LOCALSTORAGE_UNBLOCKED: 0});
+                }else{
+                    // we must wait to reload!
+                    console.log("YOU HAVE UNTIL ", until.toISOString());
+                    const diff = Math.abs(until - new Date());
+                    setTimeout(() => {
+                       console.log("TIME IS UP!");
+                       browser.storage.local.set({LOCALSTORAGE_UNBLOCKED: 0});
+                       window.location.reload();
+                    }, diff);
+                    
                 }
             })
         }
