@@ -23,6 +23,10 @@ function unblockForTime(time, inputValue, chastiseText){
 
 function unblockPage(){
     /**
+     * gives user options for how long to unblock
+     * TODO: Add checking to see if we are already unblocked.
+     */
+    /**
      * PAGE 2
      *     <div> 0
             <h2>Give a good reason:</h2>
@@ -113,8 +117,9 @@ async function match(){
                 const until = new Date(result.LOCALSTORAGE_UNTIL);
                 isPast = until < new Date();
                 if(isPast){
-                    // is past! set unblocked back to 0
+                    // is past! set unblocked back to 0 and reload
                     browser.storage.local.set({LOCALSTORAGE_UNBLOCKED: 0});
+                    window.location.reload();
                 }else{
                     // we must wait to reload!
                     console.log("YOU HAVE UNTIL ", until.toISOString());
